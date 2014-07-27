@@ -6,3 +6,5 @@ staticfiles
 *.swo
 
 *ropeproject
+
+*db.sqlite3

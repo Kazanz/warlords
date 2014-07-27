@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Project Apps
+    'cards',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,4 +88,9 @@ STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+)
+
+print os.path.join(os.path.dirname(BASE_DIR), 'templates'),
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(BASE_DIR), 'templates'),
 )
