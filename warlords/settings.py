@@ -35,6 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third party
+    'south',
     # Project Apps
     'cards',
 )
@@ -63,8 +65,11 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+try:
+    from warlords import local_settings
+except ImportError:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -80,6 +85,7 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
@@ -90,7 +96,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-print os.path.join(os.path.dirname(BASE_DIR), 'templates'),
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(BASE_DIR), 'templates'),
 )
+
+# Activate local settings if local
+try:
+    from warlords import local_settings
+except ImportError:
+    pass
